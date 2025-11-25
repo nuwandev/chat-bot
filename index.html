@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI ChatBot</title>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+  </head>
+  <body
+    class="bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen flex items-center justify-center p-6"
+    aria-label="Chat Icon"
+  >
+    <!-- Chat Container -->
+    <div
+      class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col h-[700px]"
+    >
+      <!-- Chat Header -->
+      <div
+        class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-5 flex items-center justify-between"
+      >
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-purple-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="font-bold text-lg">AI ChatBot</h1>
+            <p id="status" class="text-xs text-purple-100">Online</p>
+          </div>
+        </div>
+        <button class="hover:bg-white/20 p-2 rounded-lg transition">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat Messages Area -->
+      <div
+        id="chatMessages"
+        class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+      ></div>
+
+      <!-- Chat Input Area -->
+      <div class="bg-white border-t border-gray-200 p-4">
+        <div class="flex items-center space-x-2">
+          <!-- Input Field -->
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Type your message..."
+            class="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+
+          <!-- Send Button -->
+          <button
+            id="sendButton"
+            class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4 rounded-full hover:shadow-lg transition transform hover:scale-105"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
