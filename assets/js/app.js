@@ -18,7 +18,7 @@ sendBtn.addEventListener("click", () => {
   chatMessages.innerHTML += `
     <div class="flex items-start space-x-2 justify-end">
       <div
-        class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl rounded-tr-none p-3 shadow-sm max-w-xs"
+        class="bg-linear-to-r from-purple-600 to-blue-600 rounded-2xl rounded-tr-none p-3 shadow-sm max-w-xs"
       >
         <p class="text-white">${inputPrompt}</p>
         <span class="text-xs text-purple-200 mt-1 block text-right"
@@ -26,7 +26,7 @@ sendBtn.addEventListener("click", () => {
         >
       </div>
       <div
-        class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+        class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
       >
         U
       </div>
@@ -36,7 +36,7 @@ sendBtn.addEventListener("click", () => {
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("X-goog-api-key", "AIzaSyCmkjkg3-BI599p2SIqqq-SfK8cAJFVZXw");
+  myHeaders.append("X-goog-api-key", "AIzaSyDjiy6K4Vz3Z4cqicxKwRPsFaP6JAqleQI");
 
   const raw = JSON.stringify({
     contents: [
@@ -65,10 +65,11 @@ sendBtn.addEventListener("click", () => {
     .then((result) => {
       statusLbl.textContent = "Online";
 
-      chatMessages.innerHTML += `
+      if (result.candidates && result.candidates.length > 0) {
+        chatMessages.innerHTML += `
         <div class="flex items-start space-x-2">
           <div
-            class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+            class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
           >
             AI
           </div>
@@ -81,7 +82,15 @@ sendBtn.addEventListener("click", () => {
             <span class="text-xs text-gray-400 mt-1 block">${getTime()}</span>
           </div>
         </div>
-    `;
+      `;
+      } else {
+        if (!result || !result.candidates) {
+          console.error("Unexpected API response structure:", result);
+          statusLbl.textContent = "Error: Invalid response";
+        } else {
+          statusLbl.textContent = "Error: No candidates found";
+        }
+      }
     })
     .catch((error) => console.error(error));
 });
